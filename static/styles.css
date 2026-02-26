@@ -73,7 +73,7 @@ h1 {
   position: absolute;
   left: 0;
   top: 50%;
-  transform: translateY(-53%);
+  transform: translateY(-53%) scaleX(-1);
   color: #eee;
   text-decoration: none;
   font-size: 1.8rem;
@@ -98,7 +98,8 @@ h1 {
   padding: 0;
   color: #e94560;
   font-size: 2.9rem;
-  font-weight: 900;
+  font-weight: 700;
+  -webkit-text-stroke: 1.5px currentColor;
   line-height: 1;
   cursor: pointer;
   transition: color 0.15s;

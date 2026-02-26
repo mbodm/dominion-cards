@@ -5,7 +5,7 @@ export default function FavoritesPage() {
   return (
     <main>
       <h1>
-        <a href="/" class="back-link">&#9664;</a>
+        <a href="/" class="back-link">&#10140;</a>
         Favoriten
         <ClearFavoritesButton />
       </h1>

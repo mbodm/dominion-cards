@@ -28,7 +28,7 @@ export default function ClearFavoritesButton() {
 
   return (
     <button class="clear-btn" onClick={handleClick} title="Alle Favoriten entfernen">
-      ✕
+      ✘
     </button>
   );
 }
