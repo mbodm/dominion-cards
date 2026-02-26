@@ -32,10 +32,14 @@ export default function CardList({ favoritesOnly = false }: Props) {
 
   useEffect(() => {
     setFavorites(getFavorites());
-    fetch("/api/cards")
+    const controller = new AbortController();
+    fetch("/api/cards", { signal: controller.signal })
       .then((res) => res.json())
       .then(setCards)
-      .catch(() => setError("Fehler beim Laden der Karten."));
+      .catch((err) => {
+        if (err.name !== "AbortError") setError("Fehler beim Laden der Karten.");
+      });
+    return () => controller.abort();
   }, []);
 
   function toggleFavorite(url: string) {
