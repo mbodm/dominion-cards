@@ -1,13 +1,14 @@
 interface CardProps {
+  id?: string;
   image: string;
   name: string;
   isFavorite: boolean;
   onToggle: () => void;
 }
 
-export default function Card({ image, name, isFavorite, onToggle }: CardProps) {
+export default function Card({ id, image, name, isFavorite, onToggle }: CardProps) {
   return (
-    <div class="card">
+    <div class="card" id={id}>
       <div class="card-image-wrapper">
         <img src={image} alt={name} title={name} loading="lazy" />
         <button

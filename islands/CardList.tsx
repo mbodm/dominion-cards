@@ -21,6 +21,10 @@ function saveFavorites(favorites: Set<string>) {
   localStorage.setItem(FAVORITES_KEY, JSON.stringify([...favorites]));
 }
 
+function cardId(url: string): string {
+  return "card-" + url.replace(/[^a-zA-Z0-9]/g, "-");
+}
+
 interface Props {
   favoritesOnly?: boolean;
 }
@@ -29,6 +33,7 @@ export default function CardList({ favoritesOnly = false }: Props) {
   const [cards, setCards] = useState<CardData[]>([]);
   const [favorites, setFavorites] = useState<Set<string>>(new Set());
   const [error, setError] = useState<string | null>(null);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     setFavorites(getFavorites());
@@ -55,6 +60,14 @@ export default function CardList({ favoritesOnly = false }: Props) {
     });
   }
 
+  function handleSearch() {
+    const query = search.trim().toLowerCase();
+    if (!query) return;
+    const match = cards.find((c) => c.name.toLowerCase().includes(query));
+    if (!match) return;
+    document.getElementById(cardId(match.url))?.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+
   if (error) return <p class="error">{error}</p>;
   if (cards.length === 0) return <p class="loading">Lade Karten...</p>;
 
@@ -67,16 +80,32 @@ export default function CardList({ favoritesOnly = false }: Props) {
   }
 
   return (
-    <div class="card-grid">
-      {displayCards.map((card) => (
-        <Card
-          key={card.url}
-          image={card.url}
-          name={card.name}
-          isFavorite={favorites.has(card.url)}
-          onToggle={() => toggleFavorite(card.url)}
-        />
-      ))}
-    </div>
+    <>
+      {!favoritesOnly && (
+        <div class="search-bar">
+          <input
+            type="text"
+            class="search-input"
+            placeholder="Kartenname suchen..."
+            value={search}
+            onInput={(e) => setSearch((e.target as HTMLInputElement).value)}
+            onKeyDown={(e) => { if (e.key === "Enter") handleSearch(); }}
+          />
+          <button class="search-btn" onClick={handleSearch}>🔍</button>
+        </div>
+      )}
+      <div class="card-grid">
+        {displayCards.map((card) => (
+          <Card
+            key={card.url}
+            id={cardId(card.url)}
+            image={card.url}
+            name={card.name}
+            isFavorite={favorites.has(card.url)}
+            onToggle={() => toggleFavorite(card.url)}
+          />
+        ))}
+      </div>
+    </>
   );
 }

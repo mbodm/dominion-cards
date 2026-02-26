@@ -101,6 +101,44 @@ h1 {
   color: #aaa;
 }
 
+/* Search bar */
+.search-bar {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.search-input {
+  flex: 1;
+  padding: 0.6rem 0.9rem;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background: #16213e;
+  color: #eee;
+  font-size: 1rem;
+}
+
+.search-input::placeholder {
+  color: #666;
+}
+
+.search-btn {
+  padding: 0.6rem 0.9rem;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background: #16213e;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.search-btn:hover {
+  background: #0f3460;
+}
+
 /* Card grid */
 .card-grid {
   display: grid;
