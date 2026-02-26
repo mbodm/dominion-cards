@@ -76,7 +76,7 @@ export default function CardList({ favoritesOnly = false }: Props) {
     : cards;
 
   if (favoritesOnly && displayCards.length === 0) {
-    return <p class="loading">Noch keine Favoriten gespeichert.</p>;
+    return <p class="loading">Keine Favoriten hinzugefügt.</p>;
   }
 
   return (
@@ -86,7 +86,7 @@ export default function CardList({ favoritesOnly = false }: Props) {
           <input
             type="text"
             class="search-input"
-            placeholder="Kartenname suchen..."
+            placeholder="Karte suchen..."
             value={search}
             onInput={(e) => setSearch((e.target as HTMLInputElement).value)}
             onKeyDown={(e) => { if (e.key === "Enter") handleSearch(); }}
