@@ -1,0 +1,159 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: sans-serif;
+  background: #1a1a2e;
+  color: #eee;
+  padding: 1rem;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* Home page */
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  gap: 2rem;
+}
+
+.home-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 320px;
+}
+
+.home-btn {
+  display: block;
+  padding: 1.2rem;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 12px;
+  text-decoration: none;
+  background: #16213e;
+  color: #eee;
+  border: 2px solid #0f3460;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.home-btn:hover {
+  background: #0f3460;
+  border-color: #e94560;
+}
+
+.home-btn--favorites {
+  border-color: #e6a817;
+  color: #e6a817;
+}
+
+.home-btn--favorites:hover {
+  background: #3a2c00;
+  border-color: #e6a817;
+}
+
+/* Back link */
+.back-link {
+  color: #aaa;
+  text-decoration: none;
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.back-link:hover {
+  color: #eee;
+}
+
+/* Card grid */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1rem;
+}
+
+@media (max-width: 480px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Card */
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #16213e;
+  border-radius: 8px;
+  overflow: hidden;
+  padding-bottom: 0.5rem;
+}
+
+.card-image-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.card-image-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.star-btn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: rgba(0, 0, 0, 0.55);
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  color: #aaa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, color 0.15s;
+}
+
+.star-btn:hover {
+  background: rgba(0, 0, 0, 0.8);
+  color: #e6a817;
+}
+
+.star-btn--active {
+  color: #e6a817;
+}
+
+.card-name {
+  font-size: 0.75rem;
+  text-align: center;
+  padding: 0.4rem 0.25rem 0;
+  color: #ccc;
+}
+
+.loading,
+.error {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 1rem;
+  color: #aaa;
+}
