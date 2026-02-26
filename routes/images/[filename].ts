@@ -18,7 +18,10 @@ export async function handler(ctx: FreshContext) {
   try {
     const data = await Deno.readFile(filePath);
     return new Response(data, {
-      headers: { "content-type": contentType },
+      headers: {
+        "content-type": contentType,
+        "cache-control": "public, max-age=31536000, immutable",
+      },
     });
   } catch {
     return new Response("Not found", { status: 404 });
