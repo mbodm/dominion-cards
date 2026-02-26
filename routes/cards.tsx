@@ -4,7 +4,7 @@ export default function CardsPage() {
   return (
     <main>
       <h1>
-        <a href="/" class="back-link">←</a>
+        <a href="/" class="back-link">&lt;</a>
         Alle Karten
       </h1>
       <CardList />

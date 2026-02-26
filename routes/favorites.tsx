@@ -4,7 +4,7 @@ export default function FavoritesPage() {
   return (
     <main>
       <h1>
-        <a href="/" class="back-link">←</a>
+        <a href="/" class="back-link">&lt;</a>
         Favoriten
       </h1>
       <CardList favoritesOnly={true} />
